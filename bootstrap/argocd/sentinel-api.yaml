@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: sentinal-api
+  namespace: argocd
+
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/Dilsh4n/cloudops-sentinel-gitops.git
+    path: app/sentinel-api
+    targetRevision: main
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: cloudops
