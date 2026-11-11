@@ -10,7 +10,7 @@ spec:
 
   source:
     repoURL: https://github.com/Dilsh4n/cloudops-sentinel-gitops.git
-    path: app/sentinel-api
+    path: apps/sentinel-api
     targetRevision: main
 
   destination:
