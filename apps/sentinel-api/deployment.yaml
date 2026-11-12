@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: sentinel-api
-        image: ghcr.io/dilsh4n/cloudops-sentinel@sha256:ebfddb70fc47e6c9c433bbbcbc7059d44bb60863d31e1dedd7b995129eda460f
+        image: ghcr.io/dilsh4n/cloudops-sentinel@sha256:5d582d2f70a2a4165144eb6c36304d111fe99d6632a68623246c44a90c70f023
         imagePullPolicy: Always
         ports:
         - containerPort: 8000
