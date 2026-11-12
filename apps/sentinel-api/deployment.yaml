@@ -41,7 +41,7 @@ spec:
         
         readinessProbe: 
           httpGet:
-            path: /health
+            path: /this-endpoint-does-not-exist
             port: 8000
           initialDelaySeconds: 3
           periodSeconds: 5
