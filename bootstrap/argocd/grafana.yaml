@@ -17,6 +17,17 @@ spec:
       releaseName: grafana
 
       valuesObject:
+
+        sidecar:
+          dashboards:
+            enabled: true
+            label: grafana_dashboard
+            labelValue: "1"
+            searchNamespace: monitoring
+            provider:
+              allowUiUpdates: false
+              disableDelete: false
+
         replicas: 1
 
         service:

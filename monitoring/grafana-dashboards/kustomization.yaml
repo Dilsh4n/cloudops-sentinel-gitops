@@ -1,0 +1,16 @@
+
+
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: monitoring
+
+configMapGenerator: #build configmap from json
+  - name: grafana-linux-overview
+    files:
+      - linux-overview.json
+
+generatorOptions:
+  disableNameSuffixHash: true #Keeps the ConfigMap name stable after updates.
+  labels:
+    grafana_dashboard: "1" #Marks the ConfigMap for Grafana's dashboard sidecar.
