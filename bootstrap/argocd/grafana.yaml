@@ -17,6 +17,10 @@ spec:
       releaseName: grafana
 
       valuesObject:
+        admin:
+          existingSecret: grafana-admin-credentials
+          userKey: admin-user
+          passwordKey: admin-password
 
         sidecar:
           dashboards:
