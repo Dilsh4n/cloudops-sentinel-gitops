@@ -1,0 +1,159 @@
+apiVersion: 1
+groups:
+    - orgId: 1
+      name: infrastructure-alerts
+      folder: cloudops-sentinal
+      interval: 30s
+      rules:
+        - uid: cg4l3ce9of7k0a
+          title: CloudOps-High-CPU
+          condition: C
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: prometheus
+              model:
+                editorMode: code
+                expr: "100 * (\r\n  1 - avg by (instance) (\r\n    rate(node_cpu_seconds_total{mode=\"idle\"}[5m])\r\n  )\r\n)"
+                instant: true
+                intervalMs: 1000
+                legendFormat: __auto
+                maxDataPoints: 43200
+                range: false
+                refId: A
+            - refId: C
+              queryType: expression
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 85
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - C
+                      reducer:
+                        params: []
+                        type: last
+                      type: query
+                datasource:
+                    type: __expr__
+                    uid: __expr__
+                expression: A
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: C
+                type: threshold
+          noDataState: NoData
+          execErrState: Error
+          for: 5m
+          labels:
+            Severity: Warning
+          isPaused: false
+          notification_settings:
+            receiver: empty
+        - uid: eg4lbzjnhjy0wf
+          title: CloudOps-High-Memory
+          condition: C
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: prometheus
+              model:
+                editorMode: code
+                expr: "100 * (\r\n  1 - (\r\n    node_memory_MemAvailable_bytes\r\n    /\r\n    node_memory_MemTotal_bytes\r\n  )\r\n)"
+                instant: true
+                intervalMs: 1000
+                legendFormat: __auto
+                maxDataPoints: 43200
+                range: false
+                refId: A
+            - refId: C
+              queryType: expression
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 90
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - C
+                      reducer:
+                        params: []
+                        type: last
+                      type: query
+                datasource:
+                    type: __expr__
+                    uid: __expr__
+                expression: A
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: C
+                type: threshold
+          noDataState: NoData
+          execErrState: Error
+          for: 5m
+          labels:
+            Severity: Warning
+          isPaused: false
+        - uid: bg4lc2la2mlfkf
+          title: CloudOps-Root-Disk-High
+          condition: C
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: prometheus
+              model:
+                editorMode: code
+                expr: "100 * (\r\n  1 - (\r\n    node_filesystem_avail_bytes{mountpoint=\"/\",fstype!~\"tmpfs|overlay\"}\r\n    /\r\n    node_filesystem_size_bytes{mountpoint=\"/\",fstype!~\"tmpfs|overlay\"}\r\n  )\r\n)"
+                instant: true
+                intervalMs: 1000
+                legendFormat: __auto
+                maxDataPoints: 43200
+                range: false
+                refId: A
+            - refId: C
+              queryType: expression
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 85
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - C
+                      reducer:
+                        params: []
+                        type: last
+                      type: query
+                datasource:
+                    type: __expr__
+                    uid: __expr__
+                expression: A
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: C
+                type: threshold
+          noDataState: NoData
+          execErrState: Error
+          for: 5m
+          labels:
+            Severity: Warning
+          isPaused: false

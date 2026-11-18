@@ -27,6 +27,11 @@ spec:
             provider:
               allowUiUpdates: false
               disableDelete: false
+          alerts:
+            enabled: true
+            label: grafana_alert
+            labelValue: "1"
+            searchNamespace: monitoring
 
         replicas: 1
 
