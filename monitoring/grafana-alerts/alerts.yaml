@@ -6,7 +6,7 @@ groups:
       interval: 30s
       rules:
         - uid: cg4l3ce9of7k0a
-          title: CloudOps-High-CPU
+          title: CloudOps-High-CPU GIT
           condition: C
           data:
             - refId: A
@@ -58,7 +58,7 @@ groups:
           notification_settings:
             receiver: empty
         - uid: eg4lbzjnhjy0wf
-          title: CloudOps-High-Memory
+          title: CloudOps-High-Memory GIT
           condition: C
           data:
             - refId: A
@@ -108,7 +108,7 @@ groups:
             Severity: Warning
           isPaused: false
         - uid: bg4lc2la2mlfkf
-          title: CloudOps-Root-Disk-High
+          title: CloudOps-Root-Disk-High GIT
           condition: C
           data:
             - refId: A
