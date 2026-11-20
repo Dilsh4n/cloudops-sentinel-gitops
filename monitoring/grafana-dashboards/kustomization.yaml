@@ -9,6 +9,9 @@ configMapGenerator: #build configmap from json
   - name: grafana-linux-overview
     files:
       - linux-overview.json
+  - name: sentinal-api-overview
+    files:
+      - api-overview.json
 
 generatorOptions:
   disableNameSuffixHash: true #Keeps the ConfigMap name stable after updates.
